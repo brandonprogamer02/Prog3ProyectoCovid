@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\WebApi_Tarea7.csproj": {}
+    "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_Tarea7\\WebApi_Tarea7.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\WebApi_Tarea7.csproj": {
+    "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_Tarea7\\WebApi_Tarea7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\WebApi_Tarea7.csproj",
+        "projectUniqueName": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_Tarea7\\WebApi_Tarea7.csproj",
         "projectName": "WebApi_Tarea7",
-        "projectPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\WebApi_Tarea7.csproj",
+        "projectPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_Tarea7\\WebApi_Tarea7.csproj",
         "packagesPath": "C:\\Users\\ARCUS COMP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\obj\\",
+        "outputPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_Tarea7\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

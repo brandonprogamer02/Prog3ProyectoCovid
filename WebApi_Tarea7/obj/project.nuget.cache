@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WwNkKthzM1FjcJruFJkLhlhpVtDxJPvc0av4rAhteg1Uy6AosDDvHIWGOLz1rSZyIGbQsOoR+h5ioJoYrsSnWQ==",
+  "dgSpecHash": "y+R9zauUMCkgTsXuqbIRr7xB4/g54zGw0KHP/U/ZLFpZxH2wAvFQjIDW25qBzpt879LY0ioWr5BSN143JeB6dw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\WebApi_Tarea7.csproj",
+  "projectFilePath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_Tarea7\\WebApi_Tarea7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ARCUS COMP\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\ARCUS COMP\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",

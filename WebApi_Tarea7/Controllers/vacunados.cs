@@ -12,9 +12,10 @@ namespace WebApi_Tarea7.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DatosCovid : ControllerBase
+    public class vacunados : ControllerBase
     {
-        Response Respuesta = new Response(); 
+
+        Response Respuesta = new Response();
         private string Conexion = @"Server=localhost; uid=root; pwd=mysql; Database=tareacovid";
 
         [HttpGet]
@@ -23,11 +24,12 @@ namespace WebApi_Tarea7.Controllers
         {
             try
             {
+                
                 IEnumerable<Models.pacientes> lista = null;
 
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    var sql = "select id,cedula,nombre,apellido,telefono,fecha_nacimiento from pacientes";
+                    var sql = "select id,paciente_id,vacuna_id,fecha_vacunacion from vacunados";
 
                     lista = db.Query<Models.pacientes>(sql);
 
@@ -39,7 +41,7 @@ namespace WebApi_Tarea7.Controllers
 
                 Respuesta.mensaje = ex.Message;
             }
-           
+
 
             return Ok(Respuesta);
         }
@@ -53,12 +55,12 @@ namespace WebApi_Tarea7.Controllers
             {
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    var sql = "insert into pacientes(cedula,nombre,apellido,telefono,fecha_nacimiento)" +
-                        "values(@cedula,@nombre,@apellido,@telefono,@fecha_nacimiento)";
+                    var sql = "INSERT INTO vacunados(paciente_id,vacuna_id,fecha_vacunacion) " +
+                        "VALUES(@paciente_id,@vacuna_id,@fecha_vacunacion)";
 
                     Respuesta.exito = db.Execute(sql, pacientes);
                     Respuesta.mensaje = " 201 CREATED ";
-                    
+
                 }
 
 
@@ -67,11 +69,11 @@ namespace WebApi_Tarea7.Controllers
             {
 
                 Respuesta.mensaje = "Error: 415 UNSUPPORTED MEDIA TYPE >> " + ex.Message;
-                
+
             }
 
-            return Ok( Respuesta.mensaje + Respuesta.exito);
-            
+            return Ok(Respuesta.mensaje + Respuesta.exito);
+
 
 
 
@@ -88,7 +90,7 @@ namespace WebApi_Tarea7.Controllers
             {
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    var sql = "UPDATE pacientes SET cedula=@cedula, nombre=@nombre, apellido=@apellido,telefono=@telefono,fecha_nacimiento=@fecha_nacimiento" +
+                    var sql = "UPDATE pacientes SET paciente_id=@paciente_id, vacuna_id=@vacuna_id, fecha_vacunacion=@fecha_vacunacion " +
                         " WHERE id=@id";
 
                     Respuesta.exito = db.Execute(sql, pacientes);
@@ -104,8 +106,8 @@ namespace WebApi_Tarea7.Controllers
             }
 
             return Ok(Respuesta.mensaje + Respuesta.exito);
-           
-           
+
+
         }
 
         [HttpDelete]
