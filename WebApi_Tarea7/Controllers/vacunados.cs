@@ -20,18 +20,18 @@ namespace WebApi_Tarea7.Controllers
 
         [HttpGet]
 
-        public IActionResult Get()
+        public IActionResult GetVa()
         {
             try
             {
                 
-                IEnumerable<Models.pacientes> lista = null;
+                IEnumerable<Models.vacunados> lista = null;
 
                 using (var db = new MySqlConnection(Conexion))
                 {
                     var sql = "select id,paciente_id,vacuna_id,fecha_vacunacion from vacunados";
 
-                    lista = db.Query<Models.pacientes>(sql);
+                    lista = db.Query<Models.vacunados>(sql);
 
                     Respuesta.ls = lista;
                 }
@@ -48,7 +48,7 @@ namespace WebApi_Tarea7.Controllers
 
         [HttpPost]
 
-        public IActionResult Insert(Models.pacientes pacientes)
+        public IActionResult InsertVa(Models.vacunados pacientes)
         {
 
             try
@@ -76,21 +76,18 @@ namespace WebApi_Tarea7.Controllers
 
 
 
-
-
-
         }
 
         [HttpPut]
 
-        public IActionResult Edit(Models.pacientes pacientes)
+        public IActionResult EditVA(Models.vacunados pacientes)
         {
 
             try
             {
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    var sql = "UPDATE pacientes SET paciente_id=@paciente_id, vacuna_id=@vacuna_id, fecha_vacunacion=@fecha_vacunacion " +
+                    var sql = "UPDATE vacunados SET paciente_id=@paciente_id, vacuna_id=@vacuna_id, fecha_vacunacion=@fecha_vacunacion " +
                         " WHERE id=@id";
 
                     Respuesta.exito = db.Execute(sql, pacientes);
@@ -111,13 +108,13 @@ namespace WebApi_Tarea7.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete(Models.pacientes pacientes)
+        public IActionResult DeleteVa(Models.vacunados pacientes)
         {
             try
             {
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    var sql = "delete from pacientes where id=@id";
+                    var sql = "delete from vacunados where id=@id";
 
                     Respuesta.exito = db.Execute(sql, pacientes);
                     Respuesta.mensaje = " 201 CREATED ";
