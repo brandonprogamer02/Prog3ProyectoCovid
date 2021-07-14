@@ -19,7 +19,7 @@ namespace WebApi_Tarea7.Controllers
 
         [HttpGet]
 
-        public IActionResult Get()
+        public IActionResult GetProvinciaByID()
         {
             try
             {
@@ -28,6 +28,30 @@ namespace WebApi_Tarea7.Controllers
                 using (var db = new MySqlConnection(Conexion))
                 {
                     var sql = "select provincias.nombre,vacunas.nombre,vacunados.fecha_vacunacion,pacientes.cedula,pacientes.nombre,pacientes.apellido,pacientes.telefono from(((provincias inner join vacunas on provincia_id = provincias.id) inner join vacunados on vacunas.id = vacunas.id) inner join pacientes on paciente_id = pacientes.id)";
+
+                    lista = db.Query<Models.provincia>(sql);
+
+                    Respuesta.ls = lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Respuesta.mensaje = ex.Message;
+            }
+
+
+            return Ok(Respuesta);
+        }
+        public IActionResult Get()
+        {
+            try
+            {
+                IEnumerable<Models.provincia> lista = null;
+
+                using (var db = new MySqlConnection(Conexion))
+                {
+                    var sql = "select * from provincias)";
 
                     lista = db.Query<Models.provincia>(sql);
 
