@@ -8,17 +8,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi_Tarea7.Models.ResponseApi;
 
+
 namespace WebApi_Tarea7.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Provincia
+    public class Provincia:ControllerBase
     {
         Response Respuesta = new Response();
         private string Conexion = @"Server=localhost; uid=root; pwd=mysql; Database=tareacovid";
 
         [HttpGet]
-
         public IActionResult GetProvinciaByID()
         {
             try
@@ -40,9 +40,11 @@ namespace WebApi_Tarea7.Controllers
                 Respuesta.mensaje = ex.Message;
             }
 
-
             return Ok(Respuesta);
+
         }
+
+        [HttpGet]
         public IActionResult Get()
         {
             try

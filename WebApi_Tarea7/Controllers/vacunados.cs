@@ -19,7 +19,6 @@ namespace WebApi_Tarea7.Controllers
         private string Conexion = @"Server=localhost; uid=root; pwd=mysql; Database=tareacovid";
 
         [HttpGet]
-
         public IActionResult GetVa()
         {
             try
@@ -39,11 +38,74 @@ namespace WebApi_Tarea7.Controllers
             catch (Exception ex)
             {
 
+
                 Respuesta.mensaje = ex.Message;
             }
 
 
             return Ok(Respuesta);
+        }
+
+        public IActionResult GetConsultaVacunados()
+        {
+            try
+            {
+
+                IEnumerable<Models.vacunados> lista = null;
+
+                using (var db = new MySqlConnection(Conexion))
+                {
+                    var sql = " SELECT  p.nombre, p.apellido, v.id,v.vacuna_id,v.fecha_vacunacion FROM vacunados AS v " +
+                        " INNER JOIN pacientes AS p ON v.paciente_id = p.id ";
+
+                    lista = db.Query<Models.vacunados>(sql);
+
+                    Respuesta.ls = lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+                Respuesta.mensaje = ex.Message;
+            }
+
+
+            return Ok(Respuesta);
+
+
+
+        }
+        public IActionResult GetVacunadosMarca()
+        {
+            try
+            {
+
+                IEnumerable<Models.vacunados> lista = null;
+
+                using (var db = new MySqlConnection(Conexion))
+                {
+                    var sql = " SELECT p.nombre AS 'Personas', va.nombre AS 'Marca_Vacuna', v.id,v.vacuna_id, v.fecha_vacunacion FROM vacunados AS v " +
+                        " INNER JOIN vacunas AS va ON v.vacuna_id = va.id " +
+                        " INNER JOIN pacientes AS p ON v.paciente_id = p.id ";
+
+                    lista = db.Query<Models.vacunados>(sql);
+
+                    Respuesta.ls = lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+                Respuesta.mensaje = ex.Message;
+            }
+
+
+            return Ok(Respuesta);
+
+
+
         }
 
         [HttpPost]
