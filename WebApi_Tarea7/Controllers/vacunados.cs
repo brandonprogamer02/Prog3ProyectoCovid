@@ -1,16 +1,14 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebApi_Tarea7.Models;
 using WebApi_Tarea7.Models.ResponseApi;
 
 namespace WebApi_Tarea7.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class vacunados : ControllerBase
     {
@@ -18,12 +16,12 @@ namespace WebApi_Tarea7.Controllers
         Response Respuesta = new Response();
         private string Conexion = @"Server=localhost; uid=root; pwd=mysql; Database=tareacovid";
 
-        [HttpGet]
+        [HttpGet("vacunado")]
         public IActionResult GetVa()
         {
             try
             {
-                
+
                 IEnumerable<Models.vacunados> lista = null;
 
                 using (var db = new MySqlConnection(Conexion))
@@ -46,6 +44,8 @@ namespace WebApi_Tarea7.Controllers
             return Ok(Respuesta);
         }
 
+        [HttpGet("ConsultaVacunados")]
+
         public IActionResult GetConsultaVacunados()
         {
             try
@@ -55,8 +55,9 @@ namespace WebApi_Tarea7.Controllers
 
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    var sql = " SELECT  p.nombre, p.apellido, v.id,v.vacuna_id,v.fecha_vacunacion FROM vacunados AS v " +
-                        " INNER JOIN pacientes AS p ON v.paciente_id = p.id ";
+                    
+                    var sql = $" SELECT  p.nombre, p.apellido, v.id,v.vacuna_id,v.fecha_vacunacion FROM vacunados AS v " +
+                        $" INNER JOIN pacientes AS p ON v.paciente_id = p.id  ";
 
                     lista = db.Query<Models.vacunados>(sql);
 
@@ -76,6 +77,9 @@ namespace WebApi_Tarea7.Controllers
 
 
         }
+
+        [HttpGet("GetVacunadosMarca")]
+
         public IActionResult GetVacunadosMarca()
         {
             try

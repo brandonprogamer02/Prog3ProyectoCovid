@@ -11,14 +11,14 @@ using WebApi_Tarea7.Models.ResponseApi;
 
 namespace WebApi_Tarea7.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class Provincia:ControllerBase
     {
         Response Respuesta = new Response();
         private string Conexion = @"Server=localhost; uid=root; pwd=mysql; Database=tareacovid";
 
-        [HttpGet]
+        [HttpGet("GetProvinciaByID")]
         public IActionResult GetProvinciaByID()
         {
             try
@@ -44,7 +44,7 @@ namespace WebApi_Tarea7.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("GetProvincias")]
         public IActionResult Get()
         {
             try
