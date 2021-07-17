@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WebApi_Tarea7.Models;
 using WebApi_Tarea7.Models.ResponseApi;
 
@@ -53,15 +54,42 @@ namespace WebApi_Tarea7.Controllers
 
                 IEnumerable<Models.vacunados> lista = null;
 
+
+
                 using (var db = new MySqlConnection(Conexion))
                 {
-                    
-                    var sql = $" SELECT  p.nombre, p.apellido, v.id,v.vacuna_id,v.fecha_vacunacion FROM vacunados AS v " +
-                        $" INNER JOIN pacientes AS p ON v.paciente_id = p.id  ";
+                    var diccionario = new Dictionary<int, Models.vacunados>();
 
-                    lista = db.Query<Models.vacunados>(sql);
+                    var sql = $" SELECT * FROM vacunados AS v " +
+                        $" INNER JOIN pacientes AS p ON v.paciente_id = p.id ";
+
+                    lista = db.Query<Models.vacunados, Models.pacientes, Models.vacunados>(sql,
+                        (vacunado, paciente) =>
+                        {
+                            Models.vacunados vacunadosTemp;
+
+                            if (!diccionario.TryGetValue(vacunado.id, out vacunadosTemp))
+                            {
+                                vacunadosTemp = vacunado;
+                                vacunadosTemp.pacientes = new List<pacientes>();
+
+                                diccionario.Add(vacunadosTemp.id, vacunado);
+
+                            }
+
+                            if (paciente != null)
+                            {
+                                vacunadosTemp.pacientes.Add(paciente);
+                            }
+
+                            return vacunadosTemp;
+                        }).Distinct().ToList();
+
 
                     Respuesta.ls = lista;
+
+                  
+
                 }
             }
             catch (Exception ex)
@@ -72,8 +100,8 @@ namespace WebApi_Tarea7.Controllers
             }
 
 
-            return Ok(Respuesta);
 
+            return Ok(Respuesta);
 
 
         }
@@ -84,16 +112,49 @@ namespace WebApi_Tarea7.Controllers
         {
             try
             {
+                var diccionario = new Dictionary<int, Models.vacunados>();
 
                 IEnumerable<Models.vacunados> lista = null;
 
                 using (var db = new MySqlConnection(Conexion))
                 {
                     var sql = " SELECT p.nombre AS 'Personas', va.nombre AS 'Marca_Vacuna', v.id,v.vacuna_id, v.fecha_vacunacion FROM vacunados AS v " +
-                        " INNER JOIN vacunas AS va ON v.vacuna_id = va.id " +
-                        " INNER JOIN pacientes AS p ON v.paciente_id = p.id ";
+                        " INNER JOIN pacientes AS p ON v.paciente_id = p.id " +
+                        " INNER JOIN vacunas AS va ON va.id = v.vacuna_id ";
 
-                    lista = db.Query<Models.vacunados>(sql);
+                    lista = db.Query<Models.vacunados,Models.vacunas, Models.pacientes, Models.vacunados>(sql,
+                        (vacunado,vacuna,paciente) => 
+                        {
+                            Models.vacunados vacunadosTemp;
+
+                            if (!diccionario.TryGetValue(vacunado.id, out vacunadosTemp))
+                            {
+                                vacunadosTemp = vacunado;
+
+                                vacunadosTemp.vacunas = new List<Models.vacunas>();
+
+                                vacunadosTemp.pacientes = new List<pacientes>();
+
+                                diccionario.Add(vacunadosTemp.id, vacunado);
+
+                                
+                               
+
+                            }
+
+                            if (vacuna != null)
+                            {
+                                vacunadosTemp.vacunas.Add(vacuna);
+                            }
+
+                            if (paciente != null)
+                            {
+                                vacunadosTemp.pacientes.Add(paciente);
+                            }
+
+                            return vacunadosTemp;
+
+                        }, splitOn: "vacuna_id,paciente_id").Distinct().ToList();
 
                     Respuesta.ls = lista;
                 }

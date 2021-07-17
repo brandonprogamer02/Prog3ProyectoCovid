@@ -8,10 +8,7 @@ namespace WebApi_Tarea7.Models
     public class pacientes
     {
 
-        public pacientes()
-        {
-            vacunados = new HashSet<vacunados>();
-        }
+       
 
         public int id { get; set; }
         public int cedula { get; set; }
@@ -20,8 +17,8 @@ namespace WebApi_Tarea7.Models
         public string telefono { get; set; }
         public DateTime fecha_nacimiento { get; set; }
 
+        public List<vacunados> vacunados { get; set; }
 
-        public virtual ICollection<vacunados> vacunados { get; set; }
 
     }
 }

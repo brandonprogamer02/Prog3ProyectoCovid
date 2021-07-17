@@ -13,8 +13,8 @@ namespace WebApi_Tarea7.Models
 
         public int paciente_id { get; set; }
         public DateTime fecha_vacunacion { get; set; }
-        public virtual pacientes pacientes { get; set; }
-        public virtual vacunas vacunas { get; set; }
+        public List<pacientes> pacientes { get; set; }
+        public List<vacunas> vacunas { get; set; }
 
     }
 }
