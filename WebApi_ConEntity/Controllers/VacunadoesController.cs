@@ -91,7 +91,7 @@ namespace WebApi_ConEntity.Controllers
 
             try
             {
-                var listado = await _context.Vacunados.Include(x=> x.Paciente).FirstOrDefaultAsync(x=> x.Paciente.Nombre == nombre);
+                var listado = await _context.Vacunados.Include(x=> x.Paciente).Include(x=> x.Vacuna.Provincia).FirstOrDefaultAsync(x=> x.Paciente.Nombre == nombre);
                                
                 if (listado == null)
                 {
@@ -114,14 +114,14 @@ namespace WebApi_ConEntity.Controllers
 
 
         [HttpGet("GetVacunadosMarca/{marca}")]
-        public async Task<IActionResult> GetVacunadosMarca([FromRoute] string marca)
+        public async Task<IActionResult> GetVacunadosMarca([FromRoute]string marca)
         {
             Response respuesta = new Response();
 
     
             try
             {
-                var listado = await _context.Vacunados.Include(x => x.Paciente).Include(v=>v.Vacuna).Where(m=> m.Vacuna.Nombre == marca ).ToArrayAsync();
+                var listado = await _context.Vacunados.Include(x => x.Paciente).Include(v=>v.Vacuna.Provincia).Where(m=> m.Vacuna.Nombre == marca ).ToListAsync();
 
                 if (listado == null)
                 {
@@ -140,6 +140,93 @@ namespace WebApi_ConEntity.Controllers
 
 
             return Ok(respuesta);
+        }
+
+        [HttpGet("GetVacunadosCedu/{cedu}")]
+        public async Task<IActionResult> GetVacunadosCedu([FromRoute] int cedu)
+        {
+            Response respuesta = new Response();
+
+
+            try
+            {
+                var listado = await _context.Vacunados.Include(x => x.Paciente).Include(v => v.Vacuna.Provincia).Where(m => m.Paciente.Cedula == cedu).ToListAsync();
+
+                if (listado == null)
+                {
+                    return NotFound();
+                }
+
+                respuesta.ls = listado;
+
+            }
+            catch (Exception ex)
+            {
+                respuesta.mensaje = ex.Message;
+
+            }
+
+
+
+            return Ok(respuesta);
+        }
+
+        [HttpGet("GetVacunadosPro/{pro}")]
+        public async Task<IActionResult> GetVacunadosProvi([FromRoute] string pro)
+        {
+            Response respuesta = new Response();
+
+
+            try
+            {
+                var listado = await _context.Vacunados.Include(x => x.Paciente).Include(v => v.Vacuna.Provincia).Where(m => m.Vacuna.Provincia.Nombre == pro).ToListAsync();
+
+                if (listado == null)
+                {
+                    return NotFound();
+                }
+
+                respuesta.ls = listado;
+
+            }
+            catch (Exception ex)
+            {
+                respuesta.mensaje = ex.Message;
+
+            }
+
+            return Ok(respuesta);
+
+
+        }
+
+        [HttpGet("GetVacunadosNaci/{Naci}")]
+        public async Task<IActionResult> GetVacunadosNaci([FromRoute] DateTime Naci)
+        {
+            Response respuesta = new Response();
+
+
+            try
+            {
+                var listado = await _context.Vacunados.Include(x => x.Paciente).Include(v => v.Vacuna.Provincia).Where(m => m.Paciente.FechaNacimiento == Naci).ToListAsync();
+
+                if (listado == null)
+                {
+                    return NotFound();
+                }
+
+                respuesta.ls = listado;
+
+            }
+            catch (Exception ex)
+            {
+                respuesta.mensaje = ex.Message;
+
+            }
+
+            return Ok(respuesta);
+
+
         }
 
 

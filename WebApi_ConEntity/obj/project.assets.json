@@ -9150,11 +9150,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+      "projectUniqueName": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
       "projectName": "WebApi_ConEntity",
-      "projectPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+      "projectPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
       "packagesPath": "C:\\Users\\ARCUS COMP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\WebApi_ConEntity\\obj\\",
+      "outputPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gewEIGUMpfU5DOh5weNCk+7TifiEbo/vOHY/9nJ1Cok0YHWuHrt1q66iiij2Cklci4y3YCnaoUcHy17D7s71ww==",
+  "dgSpecHash": "llw9fKYqabE+tFNKS3a3gb4WYT+U1diLIlTHs/3VhSAasrZR1CSqKuCxKQciToEZtC0tIT4L45eYr84yo510hw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+  "projectFilePath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ARCUS COMP\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\ARCUS COMP\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

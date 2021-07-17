@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi_ConEntity.Models;
+using WebApi_ConEntity.Models.Response;
 
 namespace WebApi_ConEntity.Controllers
 {
@@ -22,23 +23,76 @@ namespace WebApi_ConEntity.Controllers
 
         // GET: api/Provincias
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Provincia>>> GetProvincias()
+        public async Task<IActionResult> GetProvincias()
         {
-            return await _context.Provincias.ToListAsync();
+            Response respuesta = new Response();
+            IEnumerable<Provincia> lista = null;
+
+            try
+            {
+
+
+                lista = await _context.Provincias.ToListAsync();
+                respuesta.ls = lista;
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.mensaje = ex.Message;
+            }
+
+
+            return Ok(respuesta);
         }
 
         // GET: api/Provincias/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Provincia>> GetProvincia(int id)
+        public async Task<IActionResult> GetProvincia(int id)
         {
-            var provincia = await _context.Provincias.FindAsync(id);
-
-            if (provincia == null)
+            Response respuesta = new Response();
+            Provincia lista = null;
+            try
             {
-                return NotFound();
+                lista = await _context.Provincias.FindAsync(id);
+
+                respuesta.ls = lista;
+
+                if (lista == null)
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.mensaje = ex.Message;
+            }
+          
+
+            return Ok(respuesta);
+        }
+
+        [HttpGet("GetVacunadosProvincia")]
+        public async Task<IActionResult> GetVacunadosProvincia()
+        {
+            Response respuesta = new Response();
+           
+
+            try
+            {
+
+
+                var listado = await _context.Vacunados.Include(x => x.Paciente).Include(v => v.Vacuna.Provincia).ToArrayAsync();
+                respuesta.ls = listado;
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.mensaje = ex.Message;
             }
 
-            return provincia;
+
+            return Ok(respuesta);
         }
 
         // PUT: api/Provincias/5
