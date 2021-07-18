@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi_ConEntity.Models;
+using WebApi_ConEntity.Models.Response;
 
 namespace WebApi_ConEntity.Controllers
 {
@@ -22,23 +23,52 @@ namespace WebApi_ConEntity.Controllers
 
         // GET: api/Pacientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Paciente>>> GetPacientes()
+        public async Task<IActionResult> GetPacientes()
         {
-            return await _context.Pacientes.ToListAsync();
+            Response respuesta = new Response();
+            IEnumerable<Paciente> lista = null;
+
+            try
+            {
+
+
+                lista = await _context.Pacientes.ToListAsync();
+
+                respuesta.ls = lista;
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.mensaje = ex.Message;
+            }
+
+
+            return Ok(respuesta);
         }
 
         // GET: api/Pacientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Paciente>> GetPaciente(int id)
+        public async Task<IActionResult> GetPaciente(int id)
         {
-            var paciente = await _context.Pacientes.FindAsync(id);
 
-            if (paciente == null)
+            Response respuesta = new Response();
+            Paciente lista = null;
+
+            try
             {
-                return NotFound();
+
+
+                lista = await _context.Pacientes.FindAsync(id);
+                respuesta.ls = lista;
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.mensaje = ex.Message;
             }
 
-            return paciente;
+
+            return Ok(respuesta);
         }
 
         // PUT: api/Pacientes/5
@@ -77,8 +107,22 @@ namespace WebApi_ConEntity.Controllers
         [HttpPost]
         public async Task<ActionResult<Paciente>> PostPaciente(Paciente paciente)
         {
-            _context.Pacientes.Add(paciente);
-            await _context.SaveChangesAsync();
+            Response respuesta = new Response();
+
+            try
+            {
+                _context.Pacientes.Add(paciente);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                 respuesta.mensaje = ex.Message;
+
+                return Ok(respuesta);
+                
+            }
+            
 
             return CreatedAtAction("GetPaciente", new { id = paciente.Id }, paciente);
         }
