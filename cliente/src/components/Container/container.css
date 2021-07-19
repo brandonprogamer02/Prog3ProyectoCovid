@@ -1,0 +1,11 @@
+._container {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     flex-direction: column;
+}
+
+._container h1 {
+     color: cornflowerblue;
+     font-weight: bold;
+}
