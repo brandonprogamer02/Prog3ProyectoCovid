@@ -1,6 +1,1 @@
-views to do:
-
-- registrar vacunados
-
-
-- consultar los vacunados
+THIS PROJECT WAS CREATED USING CREATE-REACT-APP
