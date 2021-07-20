@@ -9,12 +9,12 @@ namespace WebApi_ConEntity.Models
     {
         public Provincia()
         {
-            Vacunas = new HashSet<Vacuna>();
+            ProvinciaVacunas = new HashSet<ProvinciaVacuna>();
         }
 
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public virtual ICollection<Vacuna> Vacunas { get; set; }
+        public virtual ICollection<ProvinciaVacuna> ProvinciaVacunas { get; set; }
     }
 }
