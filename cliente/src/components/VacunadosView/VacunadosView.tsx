@@ -1,17 +1,14 @@
 import React from 'react'
-import s from './VacunasView.module.css'
+import VacunadoForm from './VacunadosForm/VacunadoForm'
+import s from './VacunadosView.module.css'
 
-export default function VacunasView() {
+export default function VacunadosView() {
      return (
           <div className={s['_container']}>
-               <div className={s['add']}>
-                    <div >
-                         <label className='my-2 h5'>Anadir Nueva Vacuna</label>
-                         <input className='my-2 px-3' type="text" /> <br />
-                         <button className='my-2 p-2 btn btn-success' style={{ color: 'white' }}> Guardar Vacuna</button>
-                    </div>
+               <div className={s['form-container']}>
+                    <VacunadoForm />
                </div>
-               <div className={s['vacunas-view-table']}>
+               <div className={s["vacunados-table"]}>
                     <table className="table table-striped">
                          <thead className="thead-dark">
                               <tr>

@@ -1,0 +1,18 @@
+._container {
+     display: flex;
+     border: 1px solid #cacaca;
+     height: 100%;
+     justify-content: space-around;
+}
+
+.form-container {
+     border: 1px solid black;
+     width: 40%;
+     display: flex;
+}
+
+.vacunados-table {
+     border: 1px solid #cacaca;
+     margin: 20px 0px;
+     width: 50%;
+}

@@ -1,17 +1,17 @@
 import React from 'react'
-import './ProvinciaView.css'
+import s from './ProvinciaView.module.css'
 
 export default function ProvinciaView() {
      return (
-          <div className='provincia-view-container'>
-               <div className='provincia-view-add'>
+          <div className={`${s['_container']}`}>
+               <div className={s['add']}>
                     <div >
                          <label className='my-2 h5'>Anadir Nueva Provincia</label>
                          <input className='my-2 px-3' type="text" /> <br />
                          <button className='my-2 p-2 btn btn-success' style={{ color: 'white' }}> Guardar Provincia</button>
                     </div>
                </div>
-               <div className="provincia-view-table">
+               <div className={`${s['provincia-view-table']}`}>
                     <table className="table table-striped">
                          <thead className="thead-dark">
                               <tr>

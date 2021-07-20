@@ -1,29 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProvinciaView from '../ProvinciasView/ProvinciaView'
 import VacunasView from '../VacunasView/VacunasView'
-import './CentralContainer.css'
+import s from './CentralContainer.module.css'
 import { Switch, Route, Link, useLocation } from 'react-router-dom'
+import VacunadosView from '../VacunadosView/VacunadosView'
 
 function CentralContainer() {
      const { pathname } = useLocation()
+     const [state, setState] = useState({
+          isVacunadosThePath: '',
+          isVacunasThePath: '',
+          isProvinciasThePath: ''
+     })
+     useEffect(() => {
+          let isVacunadosThePath = pathname == '/vacunados' ? s['seleccionado'] : pathname == '/' ? s['seleccionado'] : ''
+          let isVacunasThePath = pathname == '/vacunas' ? s['seleccionado'] : ''
+          let isProvinciasThePath = pathname == '/provincias' ? s['seleccionado'] : ''
+          setState({ isVacunadosThePath, isVacunasThePath, isProvinciasThePath })
+
+     }, [pathname])
+
 
      return (
-          <div className='central-container'>
-               <div className="target-views">
+          <div className={`${s['central-container']}`}>
+               <div className={`${s['target-views']}`}>
                     <Link to='/vacunados'>
-                         <label className={pathname == '/vacunados' ? 'seleccionado' : ''}>Vacunados</label>
+                         <label className={state.isVacunadosThePath}>Vacunados</label>
                     </Link>
                     <Link to='/vacunas'>
-                         <label className={pathname == '/vacunas' ? 'seleccionado' : ''}>Vacunas</label>
+                         <label className={state.isVacunasThePath}>Vacunas</label>
                     </Link>
                     <Link to='/provincias'>
-                         <label className={pathname == '/provincias' ? 'seleccionado' : ''}>Provincias</label>
+                         <label className={state.isProvinciasThePath}>Provincias</label>
                     </Link>
                </div>
-               <div className="contain-views">
-                    <Switch>
+               <div className={`${s['contain-views']}`}>
+                    < Switch >
                          <Route exact path='/'>
-                              <VacunasView />
+                              <VacunadosView />
+                         </Route>
+                         <Route exact path='/vacunados'>
+                              <VacunadosView />
                          </Route>
                          <Route exact path='/vacunas'>
                               <VacunasView />
@@ -33,7 +50,7 @@ function CentralContainer() {
                          </Route>
                     </Switch>
                </div>
-          </div>
+          </div >
      )
 }
 export default CentralContainer

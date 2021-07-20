@@ -1,11 +1,9 @@
 .central-container {
-     /* border: 1px solid #cacaca; */
      width: 100%;
      padding: 20px;
      margin-top: 70px;
      height: 600px;
      padding: 30px;
-     /* background-color: white; */
 }
 
 .target-views {
@@ -36,7 +34,6 @@
 }
 
 .contain-views {
-     /* border: 2px solid #707070; */
      background-color: white;
      height: calc(100% - 40px);
 }
