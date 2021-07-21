@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {}
+    "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {}
   },
   "projects": {
-    "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {
+    "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+        "projectUniqueName": "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
         "projectName": "WebApi_ConEntity",
-        "projectPath": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
-        "packagesPath": "C:\\Users\\BrandonYEros\\.nuget\\packages\\",
-        "outputPath": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
+        "projectPath": "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+        "packagesPath": "C:\\Users\\Diogenes Ulloa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\BrandonYEros\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diogenes Ulloa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
