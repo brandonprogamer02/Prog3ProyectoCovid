@@ -91,7 +91,7 @@ namespace WebApi_ConEntity.Controllers
 
             try
             {
-                var listado = await _context.Vacunados.Include(x=> x.Paciente).Include(x=> x.Vacuna.Id).FirstOrDefaultAsync(x=> x.Paciente.Nombre == nombre);
+                var listado = await _context.Vacunados.Include(x=> x.Paciente).Include(x=> x.Vacuna.Provincia).FirstOrDefaultAsync(x=> x.Paciente.Nombre == nombre);
                                
                 if (listado == null)
                 {

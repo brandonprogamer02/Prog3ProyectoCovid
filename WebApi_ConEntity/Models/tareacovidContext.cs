@@ -19,7 +19,6 @@ namespace WebApi_ConEntity.Models
 
         public virtual DbSet<Paciente> Pacientes { get; set; }
         public virtual DbSet<Provincia> Provincias { get; set; }
-        public virtual DbSet<ProvinciaVacuna> ProvinciaVacunas { get; set; }
         public virtual DbSet<Vacuna> Vacunas { get; set; }
         public virtual DbSet<Vacunado> Vacunados { get; set; }
 
@@ -28,7 +27,7 @@ namespace WebApi_ConEntity.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("data source=localhost;userid=root;database=tareacovid", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.13-mariadb"));
+                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=mysql;database=tareacovid", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.18-mysql"));
             }
         }
 
@@ -40,6 +39,8 @@ namespace WebApi_ConEntity.Models
             modelBuilder.Entity<Paciente>(entity =>
             {
                 entity.ToTable("pacientes");
+
+                entity.UseCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasIndex(e => e.Cedula, "cedula")
                     .IsUnique();
@@ -76,6 +77,8 @@ namespace WebApi_ConEntity.Models
             {
                 entity.ToTable("provincias");
 
+                entity.UseCollation("utf8mb4_0900_ai_ci");
+
                 entity.Property(e => e.Id)
                     .HasColumnType("int(20)")
                     .HasColumnName("id");
@@ -84,43 +87,16 @@ namespace WebApi_ConEntity.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("nombre");
-            });
-
-            modelBuilder.Entity<ProvinciaVacuna>(entity =>
-            {
-                entity.ToTable("provincia_vacuna");
-
-                entity.HasIndex(e => e.ProvinciaId, "provincia_id");
-
-                entity.HasIndex(e => e.VacunaId, "vacuna_id");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.ProvinciaId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("provincia_id");
-
-                entity.Property(e => e.VacunaId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("vacuna_id");
-
-                entity.HasOne(d => d.Provincia)
-                    .WithMany(p => p.ProvinciaVacunas)
-                    .HasForeignKey(d => d.ProvinciaId)
-                    .HasConstraintName("provincia_vacuna_ibfk_1");
-
-                entity.HasOne(d => d.Vacuna)
-                    .WithMany(p => p.ProvinciaVacunas)
-                    .HasForeignKey(d => d.VacunaId)
-                    .HasConstraintName("provincia_vacuna_ibfk_2");
             });
 
             modelBuilder.Entity<Vacuna>(entity =>
             {
                 entity.ToTable("vacunas");
 
+                entity.UseCollation("utf8mb4_0900_ai_ci");
+
+                entity.HasIndex(e => e.ProvinciaId, "provincia_id");
+
                 entity.Property(e => e.Id)
                     .HasColumnType("int(20)")
                     .HasColumnName("id");
@@ -129,11 +105,22 @@ namespace WebApi_ConEntity.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("nombre");
+
+                entity.Property(e => e.ProvinciaId)
+                    .HasColumnType("int(20)")
+                    .HasColumnName("provincia_id");
+
+                entity.HasOne(d => d.Provincia)
+                    .WithMany(p => p.Vacunas)
+                    .HasForeignKey(d => d.ProvinciaId)
+                    .HasConstraintName("vacunas_ibfk_1");
             });
 
             modelBuilder.Entity<Vacunado>(entity =>
             {
                 entity.ToTable("vacunados");
+
+                entity.UseCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasIndex(e => e.PacienteId, "paciente_id");
 

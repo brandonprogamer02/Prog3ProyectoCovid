@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -13,7 +14,12 @@ namespace WebApi_ConEntity.Models
         }
 
         public int Id { get; set; }
+
+        [Required(ErrorMessage ="La Cedula es obligatoria! ")]
         public int Cedula { get; set; }
+
+
+        [Required(ErrorMessage = "El Nombre es obligatorio! ")]
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Telefono { get; set; }
