@@ -1,33 +1,33 @@
 import {
-     Provincia, ProvinciaActionsEnum, ProvinciaDispatch,
-     PopulateProvinciaActionStarted, PopulateProvinciaActionSuccess,
-} from "../../../types/ProvinciaTypes"
-import ProvinciaServices from '../../../services/provinciaServices'
+     Vacunado, VacunadoActionsEnum, VacunadoDispatch,
+     PopulateVacunadoActionStarted, PopulateVacunadoActionSuccess,
+} from "../../../types/VacunadoTypes"
+import VacunadoServices from '../../../services/vacunadoServices'
 import { State } from "../../../types/storeTypes"
 
 
-const populateProvinciaAction = () => (dispatch: ProvinciaDispatch, getState: State) => {
+const populateVacunadoAction = () => (dispatch: VacunadoDispatch, getState: State) => {
 
-     function onStart(): PopulateProvinciaActionStarted {
+     function onStart(): PopulateVacunadoActionStarted {
           return {
-               type: ProvinciaActionsEnum.POPULATE_PROVINCIAS_STARTED,
+               type: VacunadoActionsEnum.POPULATE_VACUNADO_STARTED,
                payload: null
           }
      }
 
-     function onSuccess(provincias: Array<Provincia>): PopulateProvinciaActionSuccess {
+     function onSuccess(provincias: Array<Vacunado>): PopulateVacunadoActionSuccess {
           return {
-               type: ProvinciaActionsEnum.POPULATE_PROVINCIAS_SUCCESS,
+               type: VacunadoActionsEnum.POPULATE_VACUNADO_SUCCESS,
                payload: provincias
           }
      }
 
      dispatch(onStart())
 
-     ProvinciaServices.getProvincias()
+     VacunadoServices.getVacunado()
           .then(response1 => {
                dispatch(onSuccess(response1))
           })
 }
 
-export default populateProvinciaAction
+export default populateVacunadoAction

@@ -14,7 +14,7 @@ async function insertVacuna(vacuna: Vacuna): Promise<Vacuna> {
      return data
 }
 
-async function getVacunas(): Promise<Vacuna[]> {
+async function getVacunado(): Promise<Vacuna[]> {
      let response: AxiosResponse<Vacuna[]> = await baseAxios.get('/Vacunas')
      let data: Vacuna[] = response.data
      return data
@@ -42,7 +42,7 @@ async function updateVacuna(provincia: Provincia) {
 
 const provinciaServices = {
      insertVacuna,
-     getVacunas,
+     getVacunado,
      deleteVacuna,
      updateVacuna,
      getVacunadoByCedula
