@@ -18,7 +18,6 @@ namespace WebApi_ConEntity.Controllers
         private readonly tareacovidContext _context;
 
 
-
         public VacunadoesController(tareacovidContext context)
         {
             _context = context;
@@ -50,6 +49,32 @@ namespace WebApi_ConEntity.Controllers
             return Ok(respuesta);
 
            
+        }
+
+        [HttpGet("VacunadoGetAll")]
+        public async Task<IActionResult> GetAllVacunados()
+        {
+
+            Response respuesta = new Response();
+            IEnumerable<Vacunado> lista = null;
+
+            try
+            {
+
+
+                lista = await _context.Vacunados.Include(p=> p.Paciente).Include(v=> v.Vacuna.Provincia).ToListAsync();
+                respuesta.ls = lista;
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.mensaje = ex.Message;
+            }
+
+
+            return Ok(respuesta);
+
+
         }
 
         // GET: api/Vacunadoes/5
