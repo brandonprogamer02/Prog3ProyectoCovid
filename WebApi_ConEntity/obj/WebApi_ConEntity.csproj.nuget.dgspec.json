@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {}
+    "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {
+    "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+        "projectUniqueName": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
         "projectName": "WebApi_ConEntity",
-        "projectPath": "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
-        "packagesPath": "C:\\Users\\Diogenes Ulloa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diogenes Ulloa\\Desktop\\repository\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
+        "projectPath": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+        "packagesPath": "C:\\Users\\BrandonYEros\\.nuget\\packages\\",
+        "outputPath": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Diogenes Ulloa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BrandonYEros\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[10.1.1, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
@@ -107,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

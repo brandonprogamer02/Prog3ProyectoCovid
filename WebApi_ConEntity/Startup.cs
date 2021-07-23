@@ -13,11 +13,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi_ConEntity.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi_ConEntity
 {
      public class Startup
      {
+          
           public Startup(IConfiguration configuration)
           {
                Configuration = configuration;
@@ -37,6 +39,10 @@ namespace WebApi_ConEntity
                {
                     c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi_ConEntity", Version = "v1" });
                });
+               
+               services.AddCors();
+     
+               // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,13 +58,18 @@ namespace WebApi_ConEntity
                app.UseHttpsRedirection();
 
                app.UseRouting();
-
-               app.UseAuthorization();
+               app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials                                ); //This needs to set everything allowed
+               
 
                app.UseEndpoints(endpoints =>
                {
                     endpoints.MapControllers();
                });
+               Console.WriteLine("mamaguevo");
           }
      }
 }

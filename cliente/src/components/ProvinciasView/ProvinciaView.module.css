@@ -17,4 +17,9 @@
      border: 1px solid #cacaca;
      margin: 20px 0px;
      width: 50%;
+     overflow: auto;
+}
+
+img:hover {
+     cursor: pointer;
 }
