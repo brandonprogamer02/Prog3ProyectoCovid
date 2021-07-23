@@ -6,7 +6,14 @@ import VacunadoServices from '../../../services/vacunadoServices'
 import { State } from "../../../types/storeTypes"
 
 
-const populateVacunadoAction = () => (dispatch: VacunadoDispatch, getState: State) => {
+type Param = {
+     provincia?: string,
+     vacuna?: string,
+     signoZodiacal?: string,
+     nombrePaciente?: string
+}
+
+const populateVacunadoAction = (param: Param) => (dispatch: VacunadoDispatch, getState: State) => {
 
      function onStart(): PopulateVacunadoActionStarted {
           return {
@@ -15,16 +22,16 @@ const populateVacunadoAction = () => (dispatch: VacunadoDispatch, getState: Stat
           }
      }
 
-     function onSuccess(provincias: Array<Vacunado>): PopulateVacunadoActionSuccess {
+     function onSuccess(vacunados: Array<Vacunado>): PopulateVacunadoActionSuccess {
           return {
                type: VacunadoActionsEnum.POPULATE_VACUNADO_SUCCESS,
-               payload: provincias
+               payload: vacunados
           }
      }
 
      dispatch(onStart())
 
-     VacunadoServices.getVacunado()
+     VacunadoServices.getVacunados(param)
           .then(response1 => {
                dispatch(onSuccess(response1))
           })

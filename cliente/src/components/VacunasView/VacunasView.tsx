@@ -4,6 +4,7 @@ import insertVacunaAction from '../../redux/actions/vacuna/insertVacunaAction';
 import { Provincia } from '../../types/ProvinciaTypes';
 import { State } from '../../types/storeTypes';
 import { Vacuna } from '../../types/VacunaTypes';
+import { getProvinciaFromProvinciaName } from '../../utils';
 import s from './VacunasView.module.css'
 
 export default function VacunasView() {
@@ -20,18 +21,12 @@ export default function VacunasView() {
 
      function newVacuna() {
 
+          const provincia = getProvinciaFromProvinciaName(selectProvincia)
+
           let vacuna: Vacuna = {
                nombre: txtVacuna,
-               provincia: {
-                    nombre: selectProvincia
-               }
+               provincia
           }
-
-          const provincias = state.provincias
-          //obtenemos el objeto provincia aparatuir de su nombre
-          provincias.forEach(_provincia => {
-               if (_provincia.nombre == vacuna.provincia.nombre) vacuna.provincia = _provincia
-          })
 
           dispatch(insertVacunaAction(vacuna))
      }

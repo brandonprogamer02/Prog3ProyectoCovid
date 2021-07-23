@@ -1,32 +1,36 @@
 import {
-     Provincia, ProvinciaActionsEnum, ProvinciaDispatch,
-     InsertProvinciaActionSuccess, InsertProvinciaActionStarted
-} from "../../../types/ProvinciaTypes"
-import ProvinciaServices from '../../../services/provinciaServices'
+     Vacunado, VacunadoActionsEnum, VacunadoDispatch,
+     InsertVacunadoActionSuccess, InsertVacunadoActionStarted
+} from "../../../types/VacunadoTypes"
+import VacunadoServices from '../../../services/vacunadoServices'
 import { State } from "../../../types/storeTypes"
+import populateVacunadoAction from "./populateVacunadoAction"
 
 
-const insertProvinciaAction = (provincia: Provincia) => (dispatch: ProvinciaDispatch, getState: State) => {
+const insertVacunadoAction = (Vacunado: Vacunado) => (dispatch: VacunadoDispatch, getState: State) => {
 
-     function onStart(): InsertProvinciaActionStarted {
+     function onStart(): InsertVacunadoActionStarted {
           return {
-               type: ProvinciaActionsEnum.INSERT_PROVINCIA_STARTED,
+               type: VacunadoActionsEnum.INSERT_VACUNADO_STARTED,
                payload: null
           }
      }
 
-     function onSuccess(provincia: Provincia): InsertProvinciaActionSuccess {
+     function onSuccess(): InsertVacunadoActionSuccess {
           return {
-               type: ProvinciaActionsEnum.INSERT_PROVINCIA_SUCCESS,
-               payload: provincia
+               type: VacunadoActionsEnum.INSERT_VACUNADO_SUCCESS,
+               payload: null
           }
      }
 
      dispatch(onStart())
 
-     ProvinciaServices.insertProvincia(provincia)
-          .then(response1 => {
-               dispatch(onSuccess(response1))
+     VacunadoServices.insertVacunado(Vacunado)
+          .then(async (response1) => {
+               const _dispatchAny: any = dispatch
+               // lanzamos el popute ya que la api no nos devuelve la informacion completa
+               _dispatchAny(populateVacunadoAction({}));
+               dispatch(onSuccess())
           })
 }
-export default insertProvinciaAction
+export default insertVacunadoAction

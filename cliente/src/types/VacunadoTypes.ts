@@ -1,18 +1,21 @@
 import { Vacuna } from './VacunaTypes'
 
 export interface Paciente {
-     id: number,
+     id?: number,
      nombre: string,
+     cedula: number,
      apellido: string,
      telefono: string,
      fechaNacimiento: string
 }
 
 export interface Vacunado {
-     id: number,
+     id?: number,
+     pacienteId: number,
+     vacunaId: number,
      fechaVacunacion: Date,
-     paciente: Paciente,
-     vacuna: Vacuna
+     paciente?: Paciente | null,
+     vacuna?: Vacuna | null
 }
 
 export type VacunadoDispatch = (arg0: VacunadoActions) => void
@@ -35,7 +38,7 @@ export enum VacunadoActionsEnum {
 
 export type InsertVacunadoActionSuccess = {
      type: VacunadoActionsEnum.INSERT_VACUNADO_SUCCESS,
-     payload: Vacunado
+     payload: null
 }
 export type InsertVacunadoActionStarted = {
      type: VacunadoActionsEnum.INSERT_VACUNADO_STARTED,

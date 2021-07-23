@@ -7,7 +7,7 @@ import { Vacunado } from "./VacunadoTypes";
 export interface State {
      provincias: Provincia[],
      vacunas: Vacuna[],
-     // vacunados: Vacunado[]
+     vacunados: Vacunado[]
 }
 
 

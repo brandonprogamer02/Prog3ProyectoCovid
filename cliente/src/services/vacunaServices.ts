@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import baseAxios from '../baseAxios'
-import { ApiResponse } from '../types/generalTypes';
 import { Provincia } from '../types/ProvinciaTypes';
 import { Vacuna } from '../types/VacunaTypes';
 

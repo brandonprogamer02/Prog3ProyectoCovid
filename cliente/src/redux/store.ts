@@ -5,11 +5,12 @@ import provinciaReducer from './reducers/ProvinciaReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import VacunaReducer from './reducers/VacunaReducer'
+import VacunadoReducer from './reducers/VacunadoReducer'
 
 const reducers = combineReducers({
      provincias: provinciaReducer,
      vacunas: VacunaReducer,
-     // vacunados: []
+     vacunados: VacunadoReducer
 })
 
 

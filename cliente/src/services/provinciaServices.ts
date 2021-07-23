@@ -15,7 +15,7 @@ async function insertProvincia(provincia: Provincia): Promise<Provincia> {
 
 async function getProvincias(): Promise<Provincia[]> {
 
-     let response: AxiosResponse<ApiResponse<Provincia>> = await baseAxios.get('/Provincias')
+     let response: AxiosResponse<ApiResponse<Provincia[]>> = await baseAxios.get('/Provincias')
 
      let data: Provincia[] = response.data.ls
      return data
