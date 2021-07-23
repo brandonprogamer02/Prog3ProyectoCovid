@@ -9311,19 +9311,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BrandonYEros\\.nuget\\packages\\": {}
+    "C:\\Users\\ARCUS COMP\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+      "projectUniqueName": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
       "projectName": "WebApi_ConEntity",
-      "projectPath": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
-      "packagesPath": "C:\\Users\\BrandonYEros\\.nuget\\packages\\",
-      "outputPath": "C:\\ITLA\\programacion 3\\tarea7y8\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
+      "projectPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\WebApi_ConEntity.csproj",
+      "packagesPath": "C:\\Users\\ARCUS COMP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ARCUS COMP\\Desktop\\Cuatrimestre6\\Programacion_III\\Tarea7\\WebApi_Tarea7\\Prog3ProyectoCovid\\WebApi_ConEntity\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\BrandonYEros\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ARCUS COMP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9420,7 +9425,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
